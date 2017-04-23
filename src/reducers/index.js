@@ -1,14 +1,18 @@
 import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
 import gameReducer, { initialState as gameInitialState } from './gameReducer';
+import suggestionsReducer, { initialState as suggestionsInitialState } from './suggestionsReducer';
 
 const initialState = {
-    game: gameInitialState
+    game: gameInitialState,
+    suggestions: suggestionsInitialState
 };
 
 const rootReducer = (state = initialState, action) => {
     return {
-        game: gameReducer(state.game, action)
+        game: gameReducer(state.game, action),
+        suggestions: suggestionsReducer(state.suggestions, action)
     }
 }
 
@@ -22,7 +26,7 @@ export default () => {
                 return result;
             }
 
-    const store = createStore(rootReducer, applyMiddleware(logger));
+    const store = createStore(rootReducer, applyMiddleware(thunk, logger));
 
     return store;
 }

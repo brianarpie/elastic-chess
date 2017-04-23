@@ -2,10 +2,19 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import '../styles/pieces.css';
+
 class Chessboard extends Component {
     render() {
         return (
-            <div>Hello, {this.props.game.moves}</div>
+            <div>
+                <div className="Piece White King"/>
+                <div className="Piece Black King"/>
+                <div className="Piece White Knight"/>
+                <div className="Piece Black Queen"/>
+                <div className="Piece Black Pawn"/>
+                <div className="Piece White Bishop"/>
+            </div>
         )
     }
 }
@@ -21,6 +30,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, null)(Chessboard);
-
-
-

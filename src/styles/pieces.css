@@ -1,0 +1,39 @@
+.Piece {
+  background: url(../assets/images/pieces.png);
+  background-repeat: no-repeat;
+  background-size: 2000px 667px;
+  width: 333px;
+  height: 333px;
+}
+
+.White {
+  background-position-y: 0;
+}
+
+.Black {
+  background-position-y: -333px;
+}
+
+.King {
+  background-position-x: 0;
+}
+
+.Queen: {
+  background-position-x: -333px;
+}
+
+.Bishop {
+  background-position-x: -667px;
+}
+
+.Knight {
+  background-position-x: -1000px;
+}
+
+.Rook {
+  background-position-x: -1333px;
+}
+
+.Pawn {
+  background-position-x: -1667px;
+}
