@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "elasticsearch": "^13.0.0-rc2",
+    "lodash": "^4.17.4",
     "react": "^15.5.4",
     "react-autosuggest": "^9.0.1",
     "react-dom": "^15.5.4",

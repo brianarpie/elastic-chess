@@ -1,6 +1,15 @@
 import { queryPrefix } from '../lib/elasticsearch';
 
 class Actions {
+    static selectGame(game) {
+        return { type: 'SELECT_GAME', game };
+    }
+    static playPreviousMove() {
+        return { type: 'PLAY_PREVIOUS_MODE' }
+    }
+    static playNextMove() {
+        return { type: 'PLAY_NEXT_MOVE' }
+    }
     static clearSuggestions() {
         return { type: 'CLEAR_SUGGESTIONS' };
     }

@@ -3,16 +3,19 @@ import thunk from 'redux-thunk';
 
 import gameReducer, { initialState as gameInitialState } from './gameReducer';
 import suggestionsReducer, { initialState as suggestionsInitialState } from './suggestionsReducer';
+import chessboardReducer, { initialState as chessboardInitialState } from './chessboardReducer';
 
 const initialState = {
     game: gameInitialState,
-    suggestions: suggestionsInitialState
+    suggestions: suggestionsInitialState,
+    chessboard: chessboardInitialState
 };
 
 const rootReducer = (state = initialState, action) => {
     return {
         game: gameReducer(state.game, action),
-        suggestions: suggestionsReducer(state.suggestions, action)
+        suggestions: suggestionsReducer(state.suggestions, action),
+        chessboard: chessboardReducer(state.chessboard, action)
     }
 }
 

@@ -13,6 +13,6 @@ export default function suggestionsReducer(state = initialState, action ) {
             return initialState;
         }
         default:
-            return initialState;
+            return state;
     }
 }

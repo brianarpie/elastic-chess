@@ -69,6 +69,9 @@ class SearchInput extends Component {
                 suggestions={suggestions}
                 onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
                 onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+                onSuggestionSelected={(e, { suggestion }) => {
+                    this.props.selectSuggestion(suggestion);
+                }}
                 getSuggestionValue={this.getSuggestionValue}
                 renderSuggestion={this.renderSuggestion}
                 inputProps={inputProps}
@@ -96,6 +99,9 @@ function mapDispatchToProps(dispatch) {
         },
         clearSuggestions: () => {
             dispatch(Actions.clearSuggestions());
+        },
+        selectSuggestion: (suggestion) => {
+            dispatch(Actions.selectGame(suggestion));
         }
     }
 }
