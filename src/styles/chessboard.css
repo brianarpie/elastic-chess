@@ -14,7 +14,7 @@
   flex: none;
   height: 12.5%;
   width: 100%;
-  max-width: calc(100vh - 126px);
+  max-width: calc(100vh - 126px); /* subtract total height used up by other elements */
   max-height: 12.5vw;
 }
 
