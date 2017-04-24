@@ -14,7 +14,7 @@ class App extends Component {
   render() {
     return (
         <Provider store={store}>
-            <div>
+            <div className="container">
                 <SearchInput/>
                 <Chessboard/>
             </div>

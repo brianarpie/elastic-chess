@@ -1,9 +1,13 @@
 .Piece {
   background: url(../assets/images/pieces.png);
   background-repeat: no-repeat;
-  background-size: 2000px 667px;
-  width: 333px;
-  height: 333px;
+  background-size: 75vmin auto;
+  width: auto;
+  height: 12.5vmin;
+  max-height: calc(12.5vh - 8.25px); /* 66/8=8.25 */
+  /* width: 10.5vmin; */
+  /* height: 10.5vmin; */
+  /* max-height: calc(12.5vh - 8.25px); */
 }
 
 .White {
@@ -11,29 +15,29 @@
 }
 
 .Black {
-  background-position-y: -333px;
+  background-position-y: -12.5vmin;
 }
 
 .King {
   background-position-x: 0;
 }
 
-.Queen: {
-  background-position-x: -333px;
+.Queen {
+  background-position-x: -12.5vmin;
 }
 
 .Bishop {
-  background-position-x: -667px;
+  background-position-x: -25vmin;
 }
 
 .Knight {
-  background-position-x: -1000px;
+  background-position-x: -37.5vmin;
 }
 
 .Rook {
-  background-position-x: -1333px;
+  background-position-x: -50vmin;
 }
 
 .Pawn {
-  background-position-x: -1667px;
+  background-position-x: -62.5vmin;
 }

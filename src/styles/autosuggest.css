@@ -1,7 +1,7 @@
 .react-autosuggest__container {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: none;
   font-size: 15px;
 }
 .react-autosuggest__input {
@@ -20,6 +20,7 @@
 .react-autosuggest__suggestions-list {
   width: 100%;
   padding: 0;
+  margin-top: 7px;
 }
 .react-autosuggest__suggestion {
   background-color: #fff;
@@ -27,11 +28,16 @@
   height: 30px;
   width: 100%;
   padding-left: 30px;
+  padding-right: 30px;
   display: flex;
-  align-self: center;
-  align-content: center;
   align-items: center;
 }
 .react-autosuggest__suggestion--highlighted {
   background-color: #ddd;
+}
+.react-autosuggest__suggestion > div {
+  width: calc(100% - 60px);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
