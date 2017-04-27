@@ -19,7 +19,8 @@ export const queryPrefix = (value) => {
                                 "White", 
                                 "Black", 
                             ],
-                            type: "phrase_prefix"
+                            type: "cross_fields",
+                            operator: "and"
                         }
                     }
                 }

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "chess.js": "https://github.com/jhlywa/chess.js.git#master",
     "elasticsearch": "^13.0.0-rc2",
     "lodash": "^4.17.4",
     "react": "^15.5.4",

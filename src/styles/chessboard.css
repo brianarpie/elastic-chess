@@ -24,7 +24,11 @@
   height: 100%;
 }
 
-.Black.Square {
-  background-color: #ddd;
-
+.White.Square {
+  background-color: rgb(238, 238, 210);
 }
+.Black.Square {
+  /* background-color: #ddd; */
+  background-color: rgb(118, 150, 86);
+}
+

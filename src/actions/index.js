@@ -5,7 +5,7 @@ class Actions {
         return { type: 'SELECT_GAME', game };
     }
     static playPreviousMove() {
-        return { type: 'PLAY_PREVIOUS_MODE' }
+        return { type: 'PLAY_PREVIOUS_MOVE' }
     }
     static playNextMove() {
         return { type: 'PLAY_NEXT_MOVE' }

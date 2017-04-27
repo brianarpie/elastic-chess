@@ -7,7 +7,8 @@ import Actions from '../actions';
 import '../styles/autosuggest.css';
 
 const buildChessGameDescription = (game) => {
-    return `(${game.Date}) ${game.White} vs ${game.Black} @ ${game.Event}`
+    const date = game.Date.split('-')[0];
+    return `${game.White} vs ${game.Black} @ ${game.Event} ${date}`
 }
 
 class SearchInput extends Component {

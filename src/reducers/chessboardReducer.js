@@ -1,66 +1,13 @@
 import * as _ from 'lodash';
 
+// var Chess = require('./chess').Chess;
+import Chess from 'chess.js';
+var chess = new Chess();
+
 export const initialState = {
     moves: [],
     currentMoveIndex: 0,
-    chessboard: {
-        'a': [
-            {piece: 'Rook', color: 'White'},
-            {piece: 'Pawn', color: 'White'},
-            {}, {}, {}, {},
-            {piece: 'Pawn', color: 'Black'},
-            {piece: 'Rook', color: 'Black'},
-        ],
-        'b': [
-            {piece: 'Knight', color: 'White'},
-            {piece: 'Pawn', color: 'White'},
-            {}, {}, {}, {},
-            {piece: 'Pawn', color: 'Black'},
-            {piece: 'Knight', color: 'Black'},
-        ],
-        'c': [
-            {piece: 'Bishop', color: 'White'},
-            {piece: 'Pawn', color: 'White'},
-            {}, {}, {}, {},
-            {piece: 'Pawn', color: 'Black'},
-            {piece: 'Bishop', color: 'Black'},
-        ],
-        'd': [
-            {piece: 'Queen', color: 'White'},
-            {piece: 'Pawn', color: 'White'},
-            {}, {}, {}, {},
-            {piece: 'Pawn', color: 'Black'},
-            {piece: 'Queen', color: 'Black'},
-        ],
-        'e': [
-            {piece: 'King', color: 'White'},
-            {piece: 'Pawn', color: 'White'},
-            {}, {}, {}, {},
-            {piece: 'Pawn', color: 'Black'},
-            {piece: 'King', color: 'Black'},
-        ],
-        'f': [
-            {piece: 'Bishop', color: 'White'},
-            {piece: 'Pawn', color: 'White'},
-            {}, {}, {}, {},
-            {piece: 'Pawn', color: 'Black'},
-            {piece: 'Bishop', color: 'Black'},
-        ],
-        'g': [
-            {piece: 'Knight', color: 'White'},
-            {piece: 'Pawn', color: 'White'},
-            {}, {}, {}, {},
-            {piece: 'Pawn', color: 'Black'},
-            {piece: 'Knight', color: 'Black'},
-        ],
-        'h': [
-            {piece: 'Rook', color: 'White'},
-            {piece: 'Pawn', color: 'White'},
-            {}, {}, {}, {},
-            {piece: 'Pawn', color: 'Black'},
-            {piece: 'Rook', color: 'Black'},
-        ],
-    }
+    chessboard: chess.board()
 };
 
 export default function chessboardReducer(state = initialState, action) {
@@ -76,12 +23,27 @@ export default function chessboardReducer(state = initialState, action) {
                 chessboard: initialState.chessboard
             };
         }
-        case 'PLAY_NEXT_MOVE': {
-            const nextMoveIndex = state.currentMoveIndex + 1;
+        case 'PLAY_PREVIOUS_MOVE': {
+            const previousMoveIndex = state.currentMoveIndex - 1;
+            // TODO move to an observable
+            const lastMove = chess.undo();
+            chess.move({from: lastMove.to, to: lastMove.from })
 
             return {
                 ...state,
-                currentMoveIndex: nextMoveIndex
+                currentMoveIndex: previousMoveIndex,
+                chessboard: chess.board()
+            }
+        }
+        case 'PLAY_NEXT_MOVE': {
+            const nextMoveIndex = state.currentMoveIndex + 1;
+            // TODO move to an observable
+            chess.move(state.moves[state.currentMoveIndex], {sloppy: true});
+
+            return {
+                ...state,
+                currentMoveIndex: nextMoveIndex,
+                chessboard: chess.board()
             }
         }
         default:

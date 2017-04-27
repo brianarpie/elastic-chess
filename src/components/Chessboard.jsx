@@ -16,23 +16,52 @@ class Chessboard extends Component {
         }
     }
     render() {
+        const { chessboard } = this.props;
+        console.debug('chessboard',chessboard);
         return (
             <div className="Chessboard">
-                {COLS.map(colIndex => {
+                {chessboard.map((row, rowIndex) => {
                     return (
                         <div className="Row"
-                            key={colIndex}
+                            key={rowIndex}
                         >
-                            {ROWS.map((rowIndex, rIdx) => {
+                            {row.map((piece, columnIndex) => {
+                                let pieceType, pieceColor;
+
+                                // TODO: move to utility function
+                                if (piece) {
+                                    switch(piece.type) {
+                                        case 'p':
+                                            pieceType = "Pawn";
+                                            break;
+                                        case 'n':
+                                            pieceType = "Knight";
+                                            break;
+                                        case 'b':
+                                            pieceType = "Bishop";
+                                            break;
+                                        case 'q':
+                                            pieceType = "Queen";
+                                            break;
+                                        case 'r': 
+                                            pieceType = "Rook";
+                                            break;
+                                        case 'k':
+                                            pieceType = "King";
+                                            break;
+                                    }
+                                    pieceColor = piece.color == "w" ? "White" : "Black";
+                                }
+
                                 return (
                                     <div className={
                                         "Square" + 
-                                        ((rIdx + colIndex) % 2 == 0 ? " White" : " Black")
+                                        ((columnIndex + rowIndex) % 2 == 0 ? " White" : " Black")
                                         }
-                                        key={`${rowIndex}${colIndex}`} 
+                                        key={`${rowIndex}${columnIndex}`} 
                                     >
-                                        { this.props.chessboard[rowIndex][colIndex].piece &&
-                                        <div className={"Piece " + this.props.chessboard[rowIndex][colIndex].color + " " + this.props.chessboard[rowIndex][colIndex].piece} />
+                                        { piece &&
+                                        <div className={"Piece " + pieceColor + " " + pieceType} />
                                         }
                                     </div>
                                 )
@@ -47,7 +76,7 @@ class Chessboard extends Component {
 
 Chessboard.propTypes = {
     metadata: PropTypes.object.isRequired,
-    chessboard: PropTypes.object.isRequired,
+    chessboard: PropTypes.array.isRequired,
 }
 
 function mapStateToProps(state) {
