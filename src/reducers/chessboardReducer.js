@@ -16,7 +16,7 @@ export default function chessboardReducer(state = initialState, action) {
             const moves = _.filter(action.game.Moves.split(' '), (value) => {
                 return !/\d+\./.test(value);
             })
-            chess.clear();
+            chess.reset();
             return {
                 ...state,
                 moves: _.compact(moves),
